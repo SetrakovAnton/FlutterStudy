@@ -1,7 +1,6 @@
 import 'package:flutter/semantics.dart';
 
 import 'package:flutter/material.dart';
-import 'package:hello_world/row_column.dart';
 
 class Kalkulitor extends StatelessWidget {
   @override

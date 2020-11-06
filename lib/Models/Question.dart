@@ -22,20 +22,34 @@ class QuestionData {
     Question(
       title: 'Какую еду предпочитаешь?',
       answers: [
-        {'answers': 'роллы', 'isCorrect': 1,},
-        {'answers': 'или роллы',},
-        {'answers': 'роллы,да',},
-       ],
+        {
+          'answers': 'роллы',
+          'isCorrect': 1,
+        },
+        {
+          'answers': 'или роллы',
+        },
+        {
+          'answers': 'роллы,да',
+        },
+      ],
     ),
     Question(
       title: 'Куда бы хотел сьездить?',
       answers: [
-        {'answer': 'Норвегия', 'isCorrect': 1,},
-        {'answer': 'Китай',},
-        {'answer': 'Хорватия',},
+        {
+          'answer': 'Норвегия',
+          'isCorrect': 1,
+        },
+        {
+          'answer': 'Китай',
+        },
+        {
+          'answer': 'Хорватия',
+        },
       ],
-    )
+    ),
 
-    List<Question> get questions => [..._data];
+    //List<Question> get questions => [..._data];
   ];
 }
