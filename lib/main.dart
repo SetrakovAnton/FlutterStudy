@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
-import 'package:hello_world/pages/home_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,7 +18,7 @@ class MyApp extends StatelessWidget {
         ),
         fontFamily: 'Georgia',
       ),
-      home: MainMenu(),
+      home: StateFul(),
     );
   }
 }
@@ -30,90 +29,58 @@ class StateFul extends StatefulWidget {
 }
 
 class Kalkulitor extends State<StateFul> {
+  String prov1;
+  String prov2;
+  var num1;
+  var num2;
+  var sum = 0;
   bool isTouched = false;
-  num num1 = 0;
-  num num2 = 0;
-  num sum = 0;
+
+  final TextEditingController num1Controller = TextEditingController();
+  final TextEditingController num2Controller = TextEditingController();
+
+  void sumButton({var numb1, var numb2}) {
+    setState(() {
+      this.num1 = int.parse(numb1);
+      this.num2 = int.parse(numb2);
+      sum = num1 + num2;
+      print(sum);
+    });
+  }
 
   @override
-  build(BuildContext context) {
-    return Center(
-      child: Container(
-        width: 500,
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.white),
-          //color: Colors.blue[200],
-        ),
-        child: Center(
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Калькулятор')),
+      body: Center(
+        child: Container(
           child: Column(
             children: <Widget>[
+              TextField(
+                  controller: this.num1Controller,
+                  decoration:
+                      InputDecoration(hintText: 'Введите первое число')),
+              TextField(
+                  controller: this.num2Controller,
+                  decoration:
+                      InputDecoration(hintText: 'Введите второе число')),
               Container(
-                child: TextFormField(
-                    decoration:
-                        InputDecoration(labelText: 'Введите первое число:'),
-                    onSaved: (String value1) {
-                      num1 = int.parse(value1);
-                      sum += num1;
-                    }),
-              ),
-              Container(
-                child: TextFormField(
-                    decoration:
-                        InputDecoration(labelText: 'Введите второе число:'),
-                    onSaved: (String value2) {
-                      num2 = int.parse(value2);
-                      sum += num2;
-                    }),
-              ),
-              IconButton(
-                  color: Colors.red,
-                  icon:
-                      (isTouched ? Icon(Icons.add_circle) : Icon(Icons.album)),
-                  onPressed: playResult),
-              Text('$num1 + $num2'),
+                  child: RaisedButton(
+                      child: Text('сложить'),
+                      color: Colors.red,
+                      onPressed: () {
+                        sumButton(
+                          numb1: this.num1Controller.value,
+                          numb2: this.num2Controller.value,
+                        );
+                      })),
             ],
           ),
         ),
       ),
     );
   }
-
-  void playResult() {
-    setState(() {
-      if (isTouched) {
-        isTouched = false;
-      } else {
-        isTouched = true;
-        sum = num1 + num2;
-      }
-    });
-  }
-
-  num result() {
-    sum = num1 + num2;
-  }
 }
-
-class MainMenu extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Калькулятор')),
-      body: _Result(),
-    );
-  }
-}
-
-Widget _Result() => Container(
-      child: Column(
-        children: <Widget>[
-          //Num1Box(),
-          //Num2Box(),
-          //SizedBox(height: 50),
-          StateFul(),
-        ],
-      ),
-    );
 
 // class FavouriteWidget extends StatefulWidget {
 //   @override
