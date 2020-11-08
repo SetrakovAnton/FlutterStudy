@@ -16,22 +16,28 @@ class QuestionData {
           'answer': 'Witcher 3',
         },
         {'answer': 'Skyrim', 'isCorrect': 1},
-        {'answer': 'Spore'}
+        {
+          'answer': 'Spore',
+        },
+        {
+          'answer': 'Heroes of Might and Magic',
+        },
       ],
     ),
     Question(
       title: 'Какую еду предпочитаешь?',
       answers: [
         {
-          'answers': 'роллы',
+          'answers': 'Роллы',
           'isCorrect': 1,
         },
         {
-          'answers': 'или роллы',
+          'answers': 'Ичпичмак',
         },
         {
-          'answers': 'роллы,да',
+          'answers': 'Котлетка с пюрешкой',
         },
+        {'answer': 'ну ладно,роллы'},
       ],
     ),
     Question(
@@ -47,9 +53,21 @@ class QuestionData {
         {
           'answer': 'Хорватия',
         },
+        {'answer': 'куда-нибудь кроме России'},
       ],
     ),
-
-    //List<Question> get questions => [..._data];
+    Question(
+      title: 'Какой твой любимый праздник',
+      answers: [
+        {
+          'answer': 'Новый год',
+          'isCorrect': 1,
+        },
+        {'answer': 'Масленица'},
+        {'answer': 'Рождество'},
+        {'answer': 'День женщин'},
+      ],
+    ),
   ];
+  List<Question> get questions => [..._data];
 }
