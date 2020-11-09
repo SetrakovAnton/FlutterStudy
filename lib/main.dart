@@ -29,20 +29,16 @@ class StateFul extends StatefulWidget {
 }
 
 class Kalkulitor extends State<StateFul> {
-  String prov1;
-  String prov2;
-  var num1;
-  var num2;
   var sum = 0;
   bool isTouched = false;
 
   final TextEditingController num1Controller = TextEditingController();
   final TextEditingController num2Controller = TextEditingController();
 
-  void sumButton({var numb1, var numb2}) {
+  void sumButton({num numb1, num numb2}) {
     setState(() {
-      this.num1 = int.parse(numb1);
-      this.num2 = int.parse(numb2);
+      var num1 = numb1;
+      var num2 = numb2;
       sum = num1 + num2;
       print(sum);
     });
@@ -70,8 +66,8 @@ class Kalkulitor extends State<StateFul> {
                       color: Colors.red,
                       onPressed: () {
                         sumButton(
-                          numb1: this.num1Controller.value,
-                          numb2: this.num2Controller.value,
+                          numb1: int.parse(this.num1Controller.value.text),
+                          numb2: int.parse(this.num2Controller.value.text),
                         );
                       })),
             ],
